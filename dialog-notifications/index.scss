@@ -1,0 +1,36 @@
+dialog-notifications {
+  display: block;
+
+  .modal-content {
+    border: none;
+  }
+
+  .modal-header {
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--global-theme-color-heavy, #00C2B1);
+    border-radius: 4px 4px 0 0;
+    padding: 0 15px;
+    color: white;
+
+    &::before,
+    &::after {
+      content: none;
+    }
+  }
+
+  .modal-body {
+    text-align: center;
+    padding-top: 32px;
+    min-height: 95px;
+
+    .note {
+      display: inline-block;
+      text-align: left;
+      font-size: smaller;
+      color: red;
+    }
+  }
+}

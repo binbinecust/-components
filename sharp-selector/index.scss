@@ -1,0 +1,138 @@
+sharp-selector {
+  display: block;
+  position: relative;
+  background-color: white;
+
+  .text-input {
+    border: 1px solid #e4e4e4;
+    padding-right: 36px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .input-label {
+    position: relative;
+    box-sizing: border-box;
+
+    .btn-select {
+      position: absolute;
+      right: 10px;
+      height: 100%;
+      top: 0;
+    }
+
+    .not-disabled[readonly] {
+      background-color: white;
+      cursor: pointer;
+    }
+
+    .bottom-radius-none {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    .show-icon {
+      transition: transform .15s;
+    }
+  }
+
+  .type-item {
+    box-sizing: border-box;
+
+    .item-option {
+      display: flex;
+      padding: 3px 14px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+  }
+
+  .select-list {
+    position: absolute;
+    z-index: 999;
+    top: 100%;
+    left: 0;
+    min-width: 100%;
+    border: 1px solid #e4e4e4;
+    border-top: none;
+    background-color: white;
+    padding: 3px;
+    border-radius: 0 0 3px 3px;
+    transition: unset;
+    margin-top: -1px;
+    transform-origin: center top;
+
+    .list-box {
+      margin: 0;
+      max-height: 150px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      position: relative;
+      background: #fff;
+      z-index: 999;
+    }
+  }
+
+  .border-top {
+    top: 125%;
+    border-top: 1px solid #e4e4e4;
+    border-radius: 4px;
+    box-shadow: 2px 2px 2px 2px #eee;
+  }
+
+  .active {
+    color: white;
+    background-color: #337ab7;
+  }
+
+  .select-input {
+    height: 30px;
+    margin-bottom: 3px;
+  }
+
+  .select-disabled {
+    cursor: not-allowed;
+    background-color: #eee;
+    opacity: 1;
+  }
+
+  .form-control[readonly] {
+    cursor: not-allowed;
+  }
+
+  .flex-center {
+    display: flex;
+    align-items: center;
+  }
+
+  .loading-holder {
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: #909399;
+  }
+
+  .select-up {
+    transform: scaleY(-1);
+  }
+
+  .select-down {
+    transform: none;
+  }
+
+  .select-list.ng-enter, .select-list.ng-leave {
+    transition: transform cubic-bezier(0.25, 0.46, 0.45, 0.94) .15s, opacity cubic-bezier(0.25, 0.46, 0.45, 0.94) .15s;
+  }
+
+  .select-list.ng-enter,
+  .select-list.ng-leave.ng-leave-active {
+    transform: scale(1, 0.1);
+    opacity: 0;
+  }
+
+  .select-list.ng-leave,
+  .select-list.ng-enter.ng-enter-active {
+    transform: scale(1, 1);
+    opacity: 1;
+  }
+}

@@ -1,0 +1,22 @@
+<div class="modal-header">
+  <h3>高级配置</h3>
+</div>
+<form name="ThresholdForm">
+  <div class="modal-body">
+    <div class="box-tab left">
+      <uib-tabset vertical="true">
+        <uib-tab heading="健康状态">
+          <header>左开右闭区间</header>
+          <threshold-config-line x-min-value="0" ng-model="$ctrl.healthLevelThreshold[0]" x-color="#55BF3B" x-addon="{{$ctrl.unit}}"></threshold-config-line>
+          <threshold-config-line x-min-value="$ctrl.healthLevelThreshold[0]" ng-model="$ctrl.healthLevelThreshold[1]" x-color="#DDDF0D" x-max-value="$ctrl.maxValue" x-addon="{{$ctrl.unit}}"></threshold-config-line>
+          <threshold-config-line x-min-value="$ctrl.healthLevelThreshold[1]" x-value="最大" x-color="#DF5353" x-addon="{{$ctrl.unit}}"></threshold-config-line>
+        </uib-tab>
+      </uib-tabset>
+    </div>
+    <p>{{$ctrl.tip}}</p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-cancel" ng-click="$ctrl.dismiss()">取消</button>
+    <button class="btn btn-ok" ng-click="$ctrl.close({$value: $ctrl.healthLevelThreshold})" ng-disabled="ThresholdForm.$invalid">确认</button>
+  </div>
+</form>

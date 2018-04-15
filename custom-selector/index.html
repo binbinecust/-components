@@ -1,0 +1,15 @@
+<div class="input-group">
+  <select class="form-control" ng-model="$ctrl.customVal" ng-disabled="$ctrl.isDisabled" ng-change="$ctrl.onChange()">
+    <option ng-repeat="item in $ctrl.options track by item.value" ng-value="item.value">{{item.key}}</option>
+    <option value="">自定义</option>
+  </select>
+  <div class="input-group-addon" ng-if="$ctrl.units.length === 1">{{$ctrl.units[0].label}}</div>
+  <div class="input-group-addon" ng-if="$ctrl.units.length > 1">
+    <select class="form-control"
+            ng-model="$ctrl.customUnit"
+            ng-disabled="$ctrl.isDisabledUnit"
+            ng-options="item.value as item.label for item in $ctrl.units"
+            style="width: 60px;">
+    </select>
+  </div>
+</div>

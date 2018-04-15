@@ -1,0 +1,15 @@
+<div class="form-inline">
+  从
+  <div class="input-group">
+    <input class="form-control" type="text" ng-value="$ctrl.minValue" readonly />
+    <span class="input-group-addon" ng-bind="$ctrl.addon || '%'"></span>
+  </div>
+  至
+  <div class="input-group">
+    <input ng-if="$ctrl.value" type="text" ng-value="$ctrl.value" class="form-control" readonly />
+    <input ng-if="!$ctrl.value" type="number" ng-model="$ctrl.ngModel" class="form-control" min="{{$ctrl.minValue}}" max="{{$ctrl.maxValue}}" required />
+    <span class="input-group-addon" ng-bind="$ctrl.addon || '%'"></span>
+  </div>
+
+  <mark class="form-control" ng-style="{background: $ctrl.color}"></mark>
+</div>

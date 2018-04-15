@@ -1,0 +1,13 @@
+<section class="modal-content modal-{{$ctrl.resolve.items.size || 'sm'}}">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-title" ng-bind="$ctrl.resolve.items.title"></h4>
+    <i class="fa fa-times" ng-click="$ctrl.dismiss()"></i>
+  </div>
+  <div class="modal-body" id="modal-body">
+    <p ng-bind-html="$ctrl.render($ctrl.resolve.items.content)"></p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-cancel" type="button" ng-hide="$ctrl.resolve.items.type === 'alert'" ng-click="$ctrl.dismiss()" ng-bind="$ctrl.resolve.items.btnCancel"></button>
+    <button class="btn btn-ok" type="button" ng-click="$ctrl.close({$value: 'ok'})" ng-bind="$ctrl.resolve.items.btnOk"></button>
+  </div>
+</section>

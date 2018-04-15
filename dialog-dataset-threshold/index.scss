@@ -1,0 +1,15 @@
+dialog-dataset-threshold {
+  display: block;
+
+  threshold-config-line:not(:first-child) {
+    margin-top: 6px;
+  }
+
+  footer {
+    text-align: right;
+  }
+
+  p {
+    margin: 10px 0 0;
+  }
+}

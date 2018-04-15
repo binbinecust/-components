@@ -1,0 +1,57 @@
+<div class="select-selection"
+     ng-class="{'select-focused': $ctrl.editing,
+         'select-required': $ctrl.checkRequired && !$ctrl.selectedOptions.length,
+         'select-disabled': $ctrl.disabled}"
+     ng-mousedown="$ctrl.onMenuDeselect($event)">
+  <div class="select-selection__rendered">
+    <div class="select-selection__placeholder"
+         ng-bind="$ctrl.placeholder || '搜索'"
+         ng-show="!$ctrl.labelText && !$ctrl.selectedOptions.length"></div>
+    <ul>
+      <li class="select-selection__choice"
+          ng-class="{'select-disabled': $ctrl.disabled}"
+          ng-repeat="label in $ctrl.selectedOptions track by $ctrl.wrapTrackBy(label)">
+        <div class="select-selection__choice__content"
+             ng-bind="$ctrl.getLabel(label)"></div>
+        <i class="fa fa-times select-selection__choice__remove"
+           ng-if="!$ctrl.disabled"
+           ng-mousedown="$ctrl.removeChoice($event, label)"></i>
+      </li>
+      <li class="select-search select-search--inline">
+        <div class="select-search__field__wrap">
+          <input
+            type="text"
+            autocomplete="off"
+            class="select-search__field"
+            ng-model="$ctrl.searchText"
+            ng-disabled="$ctrl.disabled"
+            ng-blur="$ctrl.onOuterBlur()"
+            ng-change="$ctrl.onInputChange()"
+            ng-keydown="$ctrl.onInputKeyDown($event)"
+            ng-mousedown="$ctrl.stopPropagation($event)"
+          />
+          <span class="select-search__field__mirror" ng-bind="$ctrl.labelText"></span>
+          <input type="text" class="select-search__field__required" ng-model="$ctrl.hold"
+                 ng-required="$ctrl.required && !$ctrl.selectedOptions.length"/>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="select-options" ng-if="$ctrl.editing" ng-style="$ctrl.fixedListStyle">
+    <ul class="select-selection__box">
+      <li class="select-selection__option"
+          ng-repeat="option in $ctrl.typeOptions track by $ctrl.wrapTrackBy(option, $index)"
+          ng-class="$ctrl.getStateClass(option, $index)"
+          scroll-into-view="$index === $ctrl.activeIndex"
+          ng-bind="$ctrl.getLabel(option)"
+          ng-mouseenter="$ctrl.onMouserEnter($index)"
+          ng-mousedown="$ctrl.onClickOption(option, $event)"></li>
+      <li class="select-selection__hold" ng-show="$ctrl.isLoading">
+        <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+        正在加载...
+      </li>
+      <li class="select-selection__hold"
+          ng-show="!$ctrl.isLoading && !$ctrl.typeOptions.length">无匹配数据</li>
+    </ul>
+  </div>
+</div>

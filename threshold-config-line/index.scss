@@ -1,0 +1,18 @@
+threshold-config-line {
+  display: block;
+
+  input {
+    width: 100px !important;
+  }
+
+  mark {
+    width: 34px !important;
+  }
+
+  .input-group-addon {
+    width: 36px !important;
+    padding-left: 0;
+    padding-right: 0;
+    text-align: center;
+  }
+}

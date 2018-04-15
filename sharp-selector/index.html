@@ -1,0 +1,38 @@
+<div class="input-label" title="{{$ctrl.selectedLabel}}">
+  <input type="text" class="form-control nopointer text-input"
+         ng-attr-placeholder="{{$ctrl.placeholder}}" ng-class="$ctrl.getClass()"
+         ng-model="$ctrl.selectedLabel" ng-required="$ctrl.required" readonly
+         ng-click="$ctrl.expand();$event.stopPropagation();" />
+  <div class="btn-select flex-center" ng-if="!$ctrl.disabled">
+    <a style="margin-right: 5px" class="flex-center a-normal" ng-show="$ctrl.selectedLabel"
+       ng-click="$ctrl.removeSelect();$event.stopPropagation();">
+      <i class="fa fa-times" aria-hidden="true"></i>
+    </a>
+    <a class="flex-center show-icon a-normal" ng-class="$ctrl.editing ? 'select-up' : 'select-down'"
+       ng-click="$ctrl.expand();$event.stopPropagation();">
+      <i class="fa fa-caret-up" aria-hidden="true"></i>
+    </a>
+  </div>
+</div>
+<div class="select-list" ng-class="$ctrl.overflow ? 'border-top' : null"
+     ng-style="$ctrl.fixedListStyle" ng-if="$ctrl.editing">
+  <input type="text" class="form-control select-input" ng-model="$ctrl.currentValue"
+         ng-change="$ctrl.handleChange()" auto-focus="select" size="1"
+         ng-keydown="$ctrl.handleKeydown($event)" />
+  <ul ng-show="$ctrl.typeList.length && !$ctrl.isLoading" class="list-box">
+    <li class="type-item" ng-repeat="item in $ctrl.typeList track by $ctrl.wrapTrackBy(item)"
+        ng-mouseenter="$ctrl.changeActiveIndex($index)" ng-click="$ctrl.selectIndex($index, $event)"
+        scroll-into-view="$index === $ctrl.activeIndex">
+      <div class="item-option" ng-class="{'active': $ctrl.activeIndex === $index}" title="{{item.label}}">
+        <span ng-bind="item.label.substr(0, item.start)"></span>
+        <strong ng-bind="item.label.substr(item.start, $ctrl.currentValue.length)"></strong>
+        <span ng-bind="item.label.substr(item.start + $ctrl.currentValue.length, item.label.length)"></span>
+      </div>
+    </li>
+  </ul>
+  <div class="loading-holder" ng-show="$ctrl.isLoading">
+    <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+    正在加载...
+  </div>
+  <div class="loading-holder" ng-show="!$ctrl.isLoading && !$ctrl.typeList.length">无匹配数据</div>
+</div>

@@ -1,0 +1,33 @@
+<div class="modal-header">
+  <h3 class="modal-title">字段首选项</h3>
+</div>
+<div class="modal-body">
+  <table class="table-format-list">
+    <thead>
+      <tr>
+        <th width="30px">
+          <input type="checkbox"
+                 ng-model="$ctrl.isAllSelected"
+                 title="全选"
+                 ng-click="$ctrl.selectAllFields()" />
+        </th>
+        <th>字段名</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="fieldItem in $ctrl.resolve.fields track by $index"
+          ng-click="$ctrl.selectField(fieldItem)">
+        <td>
+          <input type="checkbox"
+                 ng-model="fieldItem.isShow"
+                 ng-disabled="fieldItem.required"
+                 ng-click="$event.stopPropagation();$ctrl.selectField()"/></td>
+        <td ng-bind="fieldItem.value || fieldItem.label"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-cancel" type="button" ng-click="$ctrl.dismiss();">取消</button>
+  <button class="btn btn-ok" type="button" ng-click="$ctrl.close({$value: $ctrl.resolve.fields})" ng-disabled="$ctrl.isDisabled">确认</button>
+</div>
